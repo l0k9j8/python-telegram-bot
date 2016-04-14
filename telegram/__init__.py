@@ -46,7 +46,8 @@ from .message import Message
 from .inlinequery import InlineQuery
 from .choseninlineresult import ChosenInlineResult
 from .inlinequeryresult import InlineQueryResultArticle, InlineQueryResultGif,\
-    InlineQueryResultMpeg4Gif, InlineQueryResultPhoto, InlineQueryResultVideo
+    InlineQueryResultMpeg4Gif, InlineQueryResultPhoto, InlineQueryResultVideo, \
+    InlineQueryResultAudio
 from .update import Update
 from .bot import Bot
 
@@ -93,4 +94,4 @@ __all__ = ('Audio', 'Bot', 'Chat', 'Emoji', 'TelegramError', 'InputFile',
            'User', 'TelegramObject', 'NullHandler', 'Voice', 'InlineQuery',
            'ReplyMarkup', 'ChosenInlineResult', 'InlineQueryResultArticle',
            'InlineQueryResultGif', 'InlineQueryResultPhoto',
-           'InlineQueryResultMpeg4Gif', 'InlineQueryResultVideo')
+           'InlineQueryResultMpeg4Gif', 'InlineQueryResultVideo', 'InlineQueryResultAudio')

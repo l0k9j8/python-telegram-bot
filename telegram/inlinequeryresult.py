@@ -497,3 +497,74 @@ class InlineQueryResultVideo(InlineQueryResult):
         data.pop('type', None)
 
         return InlineQueryResultVideo(**data)
+
+
+class InlineQueryResultAudio(InlineQueryResult):
+    """This object represents a Telegram InlineQueryResultAudio.
+
+    Attributes:
+        id (str):
+        audio_url (str):
+        title (str):
+        performer (str):
+        audio_duration (int):
+        message_text (Optional[str]):
+        parse_mode (str):
+        disable_web_page_preview (bool):
+
+    Args:
+        id (str): Unique identifier for this result, 1-64 Bytes
+        audio_url (str):
+        title (str):
+
+    Keyword Args:
+        performer (Optional[str]):
+        audio_duration (Optional[int]):
+        message_text (Optional[str]):
+        parse_mode (Optional[str]):
+        disable_web_page_preview (Optional[bool]):
+    """
+
+    def __init__(self,
+                 id,
+                 audio_url,
+                 title,
+                 performer='',
+                 audio_duration=None,
+                 message_text=None,
+                 parse_mode=None,
+                 disable_web_page_preview=None):
+
+        validate_string(audio_url, 'audio_url')
+        validate_string(title, 'title')
+        validate_string(performer, 'performer')
+        validate_string(message_text, 'message_text')
+        # Required
+        super(InlineQueryResultAudio, self).__init__('audio', id)
+        self.audio_url = audio_url
+        self.title = title
+        # Optional
+        if audio_duration is not None:
+            self.audio_duration = int(audio_duration)
+        self.performer = performer
+        self.message_text = message_text
+        self.parse_mode = parse_mode
+        self.disable_web_page_preview = bool(disable_web_page_preview)
+
+
+
+
+    @staticmethod
+    def de_json(data):
+        """
+        Args:
+            data (dict):
+
+        Returns:
+            telegram.InlineQueryResultAudio:
+        """
+        if not data:
+            return None
+        data = data.copy()
+        data.pop('type', None)
+        return InlineQueryResultAudio(**data)
